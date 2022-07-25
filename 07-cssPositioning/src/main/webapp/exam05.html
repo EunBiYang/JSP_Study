@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+*{
+	margin: 0;
+	padding:0;
+}
+
+body{
+	font : 12px Tahoma, sans=serif;
+}
+
+li{
+	list-style: none;
+}
+#wrap {
+   background-color:gray;
+   width: 800px;
+   margin:0 auto; 
+   /*0:top,bottom,  auto :left, right*/
+}
+
+#header{
+	background-color: red;
+}
+
+#container{
+	background-color: cyan;
+}
+
+.nav{
+	background-color: lightgreen;
+	width: 100px;
+	padding:50px;
+	float: left;
+}
+
+
+
+.content{	
+background-color: green;
+width:580px;
+float: right;
+}
+    /*clear를 지정하는 위치가 float를 감싸고 있는 태그에서 풀어주면,
+	#container영역의 배경을 비롯한 여러가지 박스 모델 속성들이 제대로
+	나타난다.*/
+#container::after{
+	content:"";
+	display: block;
+	clear:both;
+}
+#footer{
+	margin-top:30px;
+	background-color: green;
+}
+</style>
+
+</head>
+<body>
+	<div id="wrap">
+		<div id="header">
+			<h1>LOGO</h1>
+			<p>This website is ...</p>
+		</div>
+			
+		<div id="container">
+			<div class="nav">
+				<h2>Navigation</h2>
+				<ul>
+					<li><a href="#">Menu 1</a></li>
+					<li><a href="#">Menu 2</a></li>
+					<li><a href="#">Menu 3</a></li>
+				</ul>
+			</div>
+			
+			<div class="content">
+				<h2>Content Title</h2>
+				<p>Contrary to popular belief, Lorem Ipsum is not simply random text. 
+					It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.
+				 	Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of 
+				 	the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the 
+				 	cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes 
+				 	from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil)
+				 	by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during 
+				  	the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line
+				  	in section 1.10.32.
+
+					The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.
+					 Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced
+					  in their exact original form, accompanied by English versions from the 1914 translation by H. 
+					  Rackham.</p>
+			</div>
+		</div>
+			
+		<div id="footer">
+			<address>Seoul, Korea</address>
+		</div>
+	</div>
+</body>
+</html>

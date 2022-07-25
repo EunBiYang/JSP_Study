@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>셀렉터 만들기</title>
+
+<style type="text/css">
+	/*태그 이름으로 선택*/
+	h3, li {color: brown;}
+	
+	/*자식 셀렉터 방법으로 선택하기*/
+	/*중간에 비는것 없이 다 선택해줘야함,'>'로 구분*/
+	div > div > strong {background-color: yellow;}
+
+	/*자손태그 선택하기*/
+	ul strong {color: dodgerblue;}
+
+	/*class로 선택하기*/
+	.warning {color: red;}
+
+	body.main {background: aliceblue;}
+	
+	/*id로 선택하기*/
+	#list {background: mistyrose;}
+	
+	/*자손 셀렉터*/
+	#list span {color: forestgreen;}
+
+	/*가상요소 선택하기*/
+	h3::first-letter {color: red;}
+	
+	/*가상클래스*/
+	li:hover {background: yellowgreen;}
+	
+	a:link{color: blue;}
+	a:visited{color: green;}
+	a:hover{color: green;}
+	a:active{color: magenta;}
+	
+	input:focus{background-color: #dddddd;}
+	
+</style>
+
+</head>
+<body class="main">
+	<h3>Web Programming</h3>
+	<hr>
+	<div>
+		<div>2학기<strong>학습 내용</strong>입니다.</div>
+		<ul id="list">
+			<li><span>HTML5</span></li>
+			<li><strong>CSS</strong></li>
+			<li>JAVASCRIPT</li>
+		</ul>
+		<div class="warning">60점 이하는 F</div>
+	</div>
+	
+	<a href="http://www.naver.com">naver</a>
+	<input type="text" name="user_id">
+</body>
+</html>

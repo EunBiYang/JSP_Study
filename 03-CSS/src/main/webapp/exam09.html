@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>스타일 중첩</title>
+
+<!-- CSS파일 -->
+<link type="text/css" rel="stylesheet" href="css/external.css">
+
+<!--  <style>태그 -->
+<style type="text/css">
+p{
+	color: blue;
+	font-size: 12px;
+}
+</style> 
+
+
+</head>
+<body>
+	<h3>p태그에 스타일 중첩</h3>
+	<hr>
+	<p>Hello, Students!!</p>
+	<!-- style 지정 방법 3개가 동시에 설정될 경우:
+			우선순위는 style속성 -> <style>태그 -> CSS파일 -->
+	<p style="font-size: 25px; text-align: center; text-decoration: underline; color:green;">안녕하세요, 교수님</p>
+</body>
+</html>

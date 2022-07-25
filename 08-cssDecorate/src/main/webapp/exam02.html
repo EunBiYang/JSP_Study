@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>표 응용</title>
+<style type="text/css">
+	table{
+		border-collapse: collapse; /*이중선 제거*/ 
+	}
+	td,th{
+		text-align: left;
+		padding: 5px;
+		height: 15px;
+		width: 100px;
+	}
+	thead, tfoot{
+		background: beige;
+		color: green;
+	}
+/*짝수 tr 태그 선택*/
+tbody tr:nth-child(even) {
+	background: aliceblue;	
+}
+tbody tr:hover{
+	background: mistyrose;
+}
+</style>
+</head>
+<body>
+	<h3>1학기 성적</h3>
+	<hr>
+	<table>
+		<thead>
+			<tr>
+				<th>이름</th>
+				<th>HTML</th>
+				<th>CSS</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr>
+				<td>홍길동</td>
+				<td>80</td>
+				<td>70</td>
+			</tr>
+			<tr>
+				<td>고길동</td>
+				<td>95</td>
+				<td>99</td>
+			</tr>
+			<tr>
+				<td>김철수</td>
+				<td>85</td>
+				<td>90</td>
+			</tr>
+			<tr>
+				<td>이영희</td>
+				<td>92</td>
+				<td>96</td>
+			</tr>
+		</tbody>
+		
+		<tfoot>
+			<tr>
+				<th>합</th>
+				<th>310</th>
+				<th>249</th>
+			</tr>
+		</tfoot>
+	</table>
+</body>
+</html>
