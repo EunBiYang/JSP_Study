@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<!-- <form action="/10-Servlet/PersonServlet"> -->
+	<form action="person.jsp">
+		<table border="1" style="width: 350px;">
+			<tr>
+				<td align="center" style="width: 80px;">이름</td>
+				<td><input type="text" name="name"></td>			
+			</tr>
+			
+			<tr >
+				<td align="center" style="width: 40px;">성별</td>
+				<td>
+					<input type="radio" name="gender" id="m" value="남자">
+					<label for="m">남자</label>
+					<input type="radio" name="gender" id="w" value="여자">
+					<label for="w">여자</label>
+				</td>			
+			</tr>			
+			<tr >
+				<td align="center" style="width: 40px;">취미</td>
+				<td style="width: 500px;">
+					<input type="checkbox" name="hobby" value="독서" id="r">
+					<label for="r">독서</label>
+					<input type="checkbox" name="hobby" value="영화" id="m">
+					<label for="m">영화</label>
+					<input type="checkbox" name="hobby" value="음악" id="m2">
+					<label for="m2">음악</label>
+					<input type="checkbox" name="hobby" value="게임" id="g">
+					<label for="g">게임</label>
+					<input type="checkbox" name="hobby" value="쇼핑" id="s">
+					<label for="s">쇼핑</label>
+				</td>			
+			</tr>
+			<tr>
+				<td align="center" style="width: 40px;">색깔</td>
+				<td>
+					<select name="color">
+						<option>색을 고르세요</option>
+						<option value="red" >빨강</option>
+						<option value="blue" >파랑</option>
+						<option value="green" >초록</option>
+					</select>
+				</td>			
+			</tr>
+			<tr>
+				<td align="center" style="width: 40px;">과목</td>
+				<td>
+					<select name="subject" multiple="multiple" style="width: 100px; height: 90px; overflow:hidden;" >
+						<option value="JAVA"  >JAVA</option>
+						<option value="JSP"  >JSP</option>
+						<option value="Spring" >Spring</option>
+						<option value="jQuery"  >jQuery</option>
+						<option value="Servlet" >Servlet</option>
+					</select>
+				</td>			
+			</tr>
+			<tr>
+				<td colspan="2" align="center">
+					<input type="submit" value="SEND" >
+					<input type="reset" value="CANCEL">
+				</td>
+			</tr>
+		</table>
+	</form>
+
+</body>
+</html>
