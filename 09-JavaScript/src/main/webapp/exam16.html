@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>이벤트처리 2</title>
+<script type="text/javascript">
+
+	function sum(x, y) {
+		return x + y;
+	}
+	
+	function showResult() {
+		var result = sum(10, 50);
+		var red_result = "<font color='red'>"+result+"</font>"
+		//alert(result+", "+red_result);->alert를 사용하여 디버깅을 하며 오류를 잡는다.
+		document.querySelector("#question").innerHTML = red_result;
+
+	}
+
+	function hideResult() {
+		document.querySelector("#question").innerHTML = "?";
+
+	}
+</script>
+</head>
+<body>
+	<h1 onmouseover="showResult()" onmouseout="hideResult()">10 + 50 =<span id="question">?</span></h1>
+	<p>결과를 보려면 수식위에 마우스를 올리세요.</p>
+	
+</body>
+</html>

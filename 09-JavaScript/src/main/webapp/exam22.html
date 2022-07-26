@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Date내장객체</title>
+<script type="text/javascript">
+	function printTime() {
+;
+		//현재 시간 출력
+		var days = ["일","월","화","수","목","금","토"];
+		var mydate = new Date();	//객체 생성 및 현재시간 읽어옴
+		var yy = mydate.getFullYear();
+		var mm = mydate.getMonth()+1;
+		var dd = mydate.getDate();
+		var hh = mydate.getHours();
+		var mi = mydate.getMinutes();
+		var ss = mydate.getSeconds();
+		var i = mydate.getDay();	//요일수(일=0, 토=6) 얻기
+		var day = days[i];
+		
+		// 현재 시간 완성
+		//var result = yy+"-"+ mm+"-"+dd+" "+day+"요일 "+hh+":"+mi+":"+ss;
+		//탬플릿 문자열
+		var result = `${yy}-${mm}-${dd}-${day}-${hh}:${mi}:${ss}` 
+		//태그에 결과 출력
+		document.getElementById("timer").innerHTML=result;
+	}
+	
+	function startTimer() {
+		//setInterval(함수명, 시간(ms)): 정해진 시간마다 함수를 반복해서 호출한다.
+		setInterval(printTime,1000);
+	}
+	
+</script>
+
+</head>
+<body onload="startTimer()">
+	<h1 id="timer"></h1>
+</body>
+</html>

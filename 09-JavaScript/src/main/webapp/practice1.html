@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function Img1() {
+		var img = document.querySelector("img")
+		img.src = "media/banana.png"
+	}
+	function Img2() {
+		var img = document.querySelector("img")
+		img.src = "media/mango.png"
+	}
+	function Img3() {
+		var img = document.querySelector("img")
+		img.src = "media/apple.png"
+	}
+
+/////////////한개의 함수로 처리///////////////
+	
+	function Img(value) {
+		var img = document.querySelector("img");
+		img.src = "media/" + value + ".png";
+	}
+</script>
+</head>
+<body>
+	<h1>라디오 버튼을 클릭하면 이미지를 출력합니다.</h1>
+	<hr>
+	<form>
+		<!--this : 태그 자신을 나타내는 객체-->
+		<input type="radio" name="fruits" value="banana" onclick="Img(this.value)" checked="checked"> 바나나 
+		<input type="radio"	name="fruits" value="mango" onclick="Img(this.value)"> 망고 
+		<input type="radio" name="fruits" value="apple" onclick="Img(this.value)"> 사과 
+		<br>
+		<br> <img src="media/banana.png" width="100" height="120">
+		
+		<div>
+			<button type="submit" value="확인" >확인</button>
+		</div>
+	</form>
+
+</body>
+</html>

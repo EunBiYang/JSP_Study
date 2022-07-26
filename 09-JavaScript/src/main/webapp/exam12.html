@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>eval, Number, parseInt내장함수</title>
+<script type="text/javascript">
+	//eval 내장함수 = 문자열을 수식으로 변환
+	document.write("*** eval 내장함수 ***<br>");
+	var str = "100 + 1";
+	document.write(str + "<br>");
+	
+	var result = eval(str);
+	document.write(result + "<br>");
+	
+	//Number(문자열을 숫자로), parseInt(문자열을 정수로)내장함수
+	document.write("*** Number,parseInt 내장함수 ***<br>");
+	var value1 = "100";
+	var num1 = Number(value1);
+	var num2 = parseInt(value1);
+	
+	var r2 = num1+1; //숫자 + 숫자
+	var r3 = num2+2; //정수 + 정수 
+	
+	document.write(r2 + "<br>");
+	document.write(r3 + "<br>");
+	
+	
+	var value1 = "7.7";
+	var num1 = Number(value1);
+	var num2 = parseInt(value1);
+	
+	var r2 = num1+1; //숫자 + 숫자 =실수
+	var r3 = num2+2; //정수 + 정수 =정수
+	
+	document.write(r2 + "<br>");
+	document.write(r3 + "<br>");
+	//
+</script>
+</head>
+<body>
+
+</body>
+</html>

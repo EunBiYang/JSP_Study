@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>이벤트 처리</title>
+<script type="text/javascript">
+	function sum(x, y) {
+		return x+y;
+	}
+	
+	function printResult() {
+		var result = sum(10, 50);
+		
+		var mytag = document.querySelector("#question");
+		
+		mytag.innerHTML = result;//innerHTML은 태그에 값을 넣어주는 키
+	}
+</script>
+</head>
+<body>
+	<h1>10+ 50= <span id="question">?</span></h1>
+	<input type="button" value="결과보기" onclick="printResult()">
+</body>
+</html>

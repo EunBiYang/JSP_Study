@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>구문실행 시점</title>
+<script type="text/javascript">
+	function doPrint(num) {
+		var msg = "doPrint()가 "+num+ "회 실행되었습니다.";
+		alert(msg);
+		document.querySelector("#myid").innerHTML = msg;
+	}
+	
+	//함수 호출
+	//doPrint(1);
+</script>
+</head>
+<body onload="doPrint(1)"> 
+	<!-- onload는 모든 구문을 처음부터 끝까지 한번 실행하고 실행되는 구문  -->
+	<script type="text/javascript">
+		//doPrint(2);
+	</script>
+	
+	<h1 id="myid">안녕하세요</h1>
+	
+	<script type="text/javascript">
+		//doPrint(3);
+	</script>
+</body>
+</html>

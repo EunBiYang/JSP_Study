@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>입력받아 연산 이벤트</title>
+<script type="text/javascript">
+	function insertQustion() {
+		// 수식을 입력받을 대화상자
+		var q = prompt("사칙연산의 수식을 입력하세요.(예:100+50)","");
+		// 수식으로 변환 및 연산
+		var answer = eval(q);
+		//출력할 문자열
+		var result = q + "=" + answer;
+		//태그에 출력
+		document.querySelector("#question").innerHTML = result;
+	}
+</script>
+</head>
+<!-- onload : 브라우저가 모든 태그를 인식한 다음 동작되는 이벤트 속성 -->
+<body onload="insertQustion()">
+	<h1 id="question"></h1>
+</body>
+</html>

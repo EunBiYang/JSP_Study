@@ -1,0 +1,30 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>프롬프트, alert, confirm</title>
+<script type="text/javascript">
+
+	//prompt = 입력값을 받는 창
+	var user_id = prompt("아이디를 입력하세요.","아이디");
+	
+	//빈 문자열이 아닌 경우에만 실행
+	if(user_id != "" && user_id != null){
+		//alert = 내용만 출력하는 창
+		alert("안녕하세요." +user_id+"님");
+		
+		//confirm = 확인 취소가 있는 창
+		var result = confirm("정말 로그아웃 하시겠습니까?");
+		if(result){
+			alert("로그아웃 되셨습니다.")
+		}else{
+			alert("로그아웃이 취소 되었습니다.")
+		}
+	}
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>

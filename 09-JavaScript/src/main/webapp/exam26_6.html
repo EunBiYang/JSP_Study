@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>document</title>
+<style type="text/css">
+	form{
+	width:300px; 
+	height:500px;
+	}
+</style>
+
+<script type="text/javascript">
+	function doSubmit() {
+		//입력 태그의 입력값 검사
+		//alert("test");
+		if(!frm.name.value){
+			alert("이름을 입력해 주세요2")
+			frm.name.focus();//이름이 name태그에 커서 놓기
+			return false; // 함수 강제 종료
+		}
+	
+	}
+</script>
+
+</head>
+<body>
+	<!-- onsubmit 이벤트를 사용할 때는 submit을 무효화 시켜야함
+		함수 호출 뒤 return false (입력값이 없으면 동작하지 않게 하기위함)
+	-->
+	<form action="exam25.html">
+		<fieldset>
+			<legend>회원가입</legend>
+			<div>
+				<label>이름</label>
+				<input type="text" name="user_name">
+			</div>
+			<div>
+				<label>성별</label>
+				<!-- 두개 차이점 : 아래는 "여자"글자를 눌러도 체크가 된다! -->
+				<input type="radio" name="user_sex" id="M"  value="남자">
+				<label for="M">남자</label>
+				<input type="radio" name="user_sex" id="W" value="여자">
+				<label for="W">여자</label>
+			</div>
+			<div>
+				<label>직업</label>
+				<select name="user_job">
+					<option>----선택하세요----</option>
+					<option value="프로그래머">프로그래머</option>
+					<option value="교사">교사</option>
+					<option value="학생">학생</option>
+				</select>
+			</div>
+			<div>
+				<label>취미</label>
+				<input type="checkbox" name="hobby" value="축구" id="s">
+				<label for="s">축구</label>
+				<input type="checkbox" name="hobby" value="농구" id="b">
+				<label for="b">농구</label>
+				<input type="checkbox" name="hobby" value="야구" id="b2">
+				<label for="b2">야구</label>
+			</div>
+			<div>
+				<!-- type="button"을 사용시 onclick 사용할때 submit을 무효화 안해도 됨 -->
+				<input type="button" value="제출" onclick="doSubmit()">
+				<input type="reset" value="리셋" >
+			</div>
+			
+		</fieldset>
+	</form>
+</body>
+</html>
