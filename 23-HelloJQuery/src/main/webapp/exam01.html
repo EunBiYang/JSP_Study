@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>exam1</title>
+<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+	
+	function hello() {
+		var h1 = document.getElementById("hello");
+		h1.innerHTML = "Hello jQuery";
+	}
+	
+	jQuery(hello); 
+	//classic javascrip(고전적인)의 onload 이벤트와 같은 효과
+
+/*
+	window.onload = function(){
+		hello();
+	}
+*/
+	
+	
+</script>
+</head>
+<body>
+	<h1 id="hello"></h1>
+</body>
+</html>

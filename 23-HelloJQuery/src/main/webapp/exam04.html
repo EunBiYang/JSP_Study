@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>exam4</title>
+<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+	//jQuery 사용방법 1
+
+	$(function ($) {
+		$("#hello").html("Hello jQuery") ;	//태그에 값 출력
+		alert($("#text").html());		// 태그 값 읽기
+	});
+	
+	
+/* 
+ jQuery 사용방법 1 : jQuery(function hello($) {var h1 = $("#hello"); h1.html("Hello jQuery")});
+ jQuery 사용방법 2 :   $   (function    ($)   {$("#hello").html("Hello jQuery");});
+ 
+	$(function ($) {
+		//jQuery 코드
+		var h1 = $("#hello");
+		h1.html("Hello jQuery")
+	});
+
+	//jQuery 사용방법 2
+	jQuery(
+		function hello($) {
+		//jQuery 코드
+		var h1 = $("#hello");
+		h1.html("Hello jQuery")
+	});
+	
+
+*/   
+</script>
+
+
+</head>
+<body>
+	<h1 id="hello"></h1>
+	<p id="text">안녕하세요. 제이쿼리</p>
+</body>
+</html>
