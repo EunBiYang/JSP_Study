@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="css/event.css">
+<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+	
+	$(function () {
+		//hover : mouseenter+mouseleave
+		$("#input").hover(function () {//마우스가 올라갔을때
+			$("#result").html("Mouse In Event");
+		}, function () {//마우스가 벗어 났을때
+			$("#result").html("Mouse Out Event");
+		});
+	});
+
+</script>
+</head>
+<body>
+	<h1>Hover 이벤트 확인하기</h1>
+	<div id="input">Mouse Over or Out Here~!!</div>
+
+	<h2>결과</h2>
+	<div id="result"></div>
+</body>
+</html>

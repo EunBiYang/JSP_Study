@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="css/event.css">
+<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+$(function() {
+	var count = 0; //키가 눌린 횟수
+	
+	//keypress : 글자가 입력되어지면 
+	//(아스키코드기준이기 때문에 한글은 인식 못한다,한글은 keydown이나 keyup)
+
+	$("#input > input[type='text']").keypress(function() {
+		count++;
+		$("#result").html("key count: "+count);
+	});
+});
+
+</script>
+</head>
+<body>
+	<h1>Key 이벤트 확인하기</h1>
+	<div id="input">
+		<input type="text">
+	</div>
+
+	<h2>결과</h2>
+	<div id="result"></div>
+</body>
+</html>
