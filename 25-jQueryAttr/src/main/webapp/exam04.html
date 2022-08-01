@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+<style type="text/css">
+ul {
+	padding: 0;
+	margin: 0;
+	width: 670px;
+	list-style: none;
+}
+
+li {
+	float: left;
+}
+
+ul:after {
+	content: "";
+	display: block;
+	float: none;
+	clear: both;
+}
+
+img {
+	border: none;
+}
+td {
+	padding: 0;
+	margin: 0;
+}
+</style>
+<script type="text/javascript">
+	$(function () {
+		$("img[src='img/jquery.jpg']").hover(
+				function() {$(this).attr("src", "img/jquery_on.jpg");}, //올렸을때
+				function() {$(this).attr("src", "img/jquery.jpg");}		//뗏을때
+				);
+				
+		$("img[src='img/javascript.jpg']").hover(function() {
+			$(this).attr("src", "img/javascript_on.jpg");
+		},function(){
+			$(this).attr("src", "img/javascript.jpg");
+		})
+		$("img[src='img/css.jpg']").hover(function() {
+			$(this).attr("src", "img/css_on.jpg");
+		},function(){
+			$(this).attr("src", "img/css.jpg");
+		})
+		$("img[src='img/html.jpg']").hover(function() {
+			$(this).attr("src", "img/html_on.jpg");
+		},function(){
+			$(this).attr("src", "img/html.jpg");
+		})
+	})
+</script>
+</head>
+<body>
+	<ul>
+		<li>
+			<a href="#"><img alt="jQuery" src="img/jquery.jpg"></a>
+		</li>
+		<li>
+			<a href="#"><img alt="javascript" src="img/javascript.jpg"></a>
+		</li>
+		<li>
+			<a href="#"><img alt="CSS" src="img/css.jpg"></a>
+		</li>
+		<li>
+			<a href="#"><img alt="HTML" src="img/html.jpg"></a>
+		</li>
+	</ul>
+	<hr>
+	
+	<table cellspacing="0">
+		<tr>
+			<td><a href="#"><img alt="jQuery" src="img/jquery.jpg"></a></td>
+			<td><a href="#"><img alt="javascript" src="img/javascript.jpg"></a></td>
+			<td><a href="#"><img alt="CSS" src="img/css.jpg"></a></td>
+			<td><a href="#"><img alt="HTML" src="img/html.jpg"></a></td>
+		</tr>
+	</table>
+</body>
+</html>

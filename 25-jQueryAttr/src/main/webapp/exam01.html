@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="css/event.css">
+<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		var index =1;
+		$("img").click(function() {
+			index = (index % 3)+1;	//index값이 1~3으로 순환함
+			$(this).attr("src", "img/"+index+".jpg")	//attr : 속성 바꾸기 함수
+		})
+	})
+</script>
+</head>
+<body>
+	<h1>속성 제어</h1>
+	<p>클릭하세요</p>
+	<img src="img/1.jpg" alt="이미지">
+</body>
+</html>
