@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+<style type="text/css">
+#thumb{
+	padding: 0;
+	margin: 0;
+	width: 100px;
+	float: left;
+}
+#thumb li{
+	padding: 5px 10px;
+}
+#thumb img{
+	width: 80px;
+	height: 80px;
+}
+#view{
+	padding: 5px 0;
+	width: 360px;
+	height: 270px;
+	float: left;
+}
+#view img{
+	width: 100%;
+	height: 100%;
+}
+</style>
+<script type="text/javascript">
+	$(function () {
+		/*
+		//하나만 가지고 할때!
+		$(function () {
+			$(".item").click(function () {
+				var image = $(this).attr("href"); //this : a태그
+				$("#view").hide(500, function () {
+					$("#view img").attr("src", image);
+					$(this).show(500);  //this : view
+				});
+				return false; //a태그 무효화
+			});
+		*/
+		
+		//효과를 따로 주기위해 나눠서 작업
+		$(".item:eq(0)").click(function () {
+			var image = $(this).attr("href"); //this : a태그
+			$("#view").hide(500, function () {
+				$("#view img").attr("src", image);
+				$(this).show(500);  //this : view
+			});
+			return false; //a태그 무효화
+		});
+		$(".item:eq(1)").click(function () {
+			var image = $(this).attr("href"); //this : a태그
+			$("#view").fadeOut(500, function () {
+				$("#view img").attr("src", image);
+				$(this).fadeIn(500);  //this : view
+			});
+			return false; //a태그 무효화
+		});
+		$(".item:eq(2)").click(function () {
+			var image = $(this).attr("href"); //this : a태그
+			$("#view").slideUp(500, function () {
+				$("#view img").attr("src", image);
+				$(this).slideDown(500);  //this : view
+			});
+			return false; //a태그 무효화
+		});
+		
+	});
+</script>
+</head>
+<body>
+	<!-- 썸네일 이미지 영역 -->
+	<ul id="thumb">
+		<li>
+			<a href="img/1.jpg" class="item"><img alt="" src="img/1.jpg"></a>
+		</li>
+		<li>
+			<a href="img/2.jpg" class="item"><img alt="" src="img/2.jpg"></a>
+		</li>
+		<li>
+			<a href="img/3.jpg" class="item"><img alt="" src="img/3.jpg"></a>
+		</li>
+	</ul>
+	
+	<!-- 큰 이미지 영역 -->
+	<div id="view"><img alt="" src="img/1.jpg"></div>
+</body>
+</html>

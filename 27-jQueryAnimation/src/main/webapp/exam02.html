@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+
+	$(function() {
+		$("#fade > input:eq(0)").click(function() {
+			$("#fade > div").fadeIn(500);
+		})
+		$("#fade > input:eq(1)").click(function() {
+			$("#fade > div").fadeOut(500);
+		})
+		$("#fade > input:eq(2)").click(function() {
+			$("#fade > div").fadeToggle(500);
+		})
+	})
+</script>
+</head>
+<body>
+   <h1>fade in/fade out</h1>
+   <div id="fade">
+      <input type="button" value="보이기">
+      <input type="button" value="숨기기">
+      <input type="button" value="fade 토글">
+      
+      <div>
+         <img alt="" src="img/2.jpg" width="300px" height="200px">
+      </div>
+   </div>
+</body>
+</html>
