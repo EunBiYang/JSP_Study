@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+<style type="text/css">
+	body{
+		background: #252422;
+	}
+	ul{
+		padding: 0;
+		margin: 50px auto;
+		list-style: none;
+		width: 800px;
+	}
+	.title{
+		padding: 0;
+		margin: 0;
+	}
+	.title > a{
+		display: block;
+		padding-top: 12px;
+		font-size: 14px;
+		text-indent: 12px;
+		text-decoration: none;
+		font-weight: bold;
+		color: white;
+		height: 23px;
+		background: url("img/background.jpg"); 
+	}
+	.selected{
+		background: url("img/background-selected.jpg") !important;
+	}
+	.content{
+		margin: 0;
+		background: #d4d0c9;
+		padding: 10px;
+		height: 200px;
+		overflow-y: auto; 
+	}
+
+</style>
+<script type="text/javascript">
+
+	$(function() {
+		//화면 초기화
+		$(".collapsible:eq(0) > .content").load($(".collapsible:eq(0) .title a").attr("href"));
+		$(".collapsible:eq(0) .title a").addClass("selected");
+		//나머지 태그 숨기기
+		$(".collapsible").not(":eq(0)").find(".content").hide();
+		
+		//a태그 이벤트 처리
+		//toggleClass : 있으면 삭제 없으면 추가
+		$(".collapsible .title a").click(function() {
+			$(this).toggleClass("selected");
+			$(".collapsible .title a").not(this).removeClass("selected");
+			//.not(this) : 선택되어지지 않은 태그, 즉 나를 빼고 나머지 			
+			//펼칠 <p>테그 검색
+			var target = $(this).parents(".collapsible").find(".content");
+			//나머지 <p>태그 검색
+			var other = $(".collapsible .title a").not(this).parents(".collapsible").find(".content");
+			
+			//<p> 태그 열고 닫기
+			target.slideToggle(300);
+			other.slideUp(300);
+			
+			//내용 추가
+			target.load($(this).attr("href"));
+			
+			//<a>태그 무효화
+			return false;
+		});
+		
+	});
+</script>
+</head>
+<body>
+	<ul>
+		<li class="collapsible">
+			<h2 class="title"><a href="txt/html5.txt">HTML5</a></h2>
+			<p class="content"></p>
+		</li>
+		<li class="collapsible">
+			<h2 class="title"><a href="txt/jquery.txt">jQuery</a></h2>
+			<p class="content"></p>
+		</li>
+		<li class="collapsible">
+			<h2 class="title"><a href="txt/bootstrap.txt">Bootstrap</a></h2>
+			<p class="content"></p>
+		</li>
+	</ul>
+</body>
+</html>
