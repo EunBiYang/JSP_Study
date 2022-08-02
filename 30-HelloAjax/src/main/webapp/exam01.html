@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/common.css">
+<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+
+	$(function() {
+		$("#mybtn").click(function() {
+			$.ajax({						//브라우저가 요청한다
+				url : "ajax/text/text01.txt",//현재 페이지에서 서버한테 파일 주세요 요청하는거!
+				type : "get",
+				//data : "파라미터 문자열 key=value&key=value" : 데이터를 전송할때 사용할 수 있다.
+				dataType:"text",			//응답 데이터 텍스트로
+				timeout : 30000,			//응답 기다리는시간 30초, 넘으면 에러발생
+				cache : false,				//이전 요청에 대한 캐쉬저장 여부, 저장하지 않겠다.
+				success : function(data){	//응답코드가 200이면 호출되는 함수
+					$("#result").html(data);
+				},	
+				//xhr, textStatus, errorThrown : 교재에 뜻 풀이 있음
+				error: function(xhr, textStatus, errorThrown){ //응답코드가 200이 아니면 호출
+					$("#result").html(textStatus+"/"+ xhr.status);
+				}		
+			});
+		});
+	});
+</script>
+</head>
+<body>
+	<h1 class="title">$.ajax()함수를 사용한 텍스트 읽기</h1>
+	<div class="exec">
+		<input type="button" value="text 파일 가져오기" id="mybtn">
+	</div>
+	
+	<div class="console" id="result"></div>
+</body>
+</html>
