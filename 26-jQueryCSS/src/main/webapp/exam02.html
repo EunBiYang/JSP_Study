@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+<style type="text/css">
+*{
+	padding: 0;
+	margin: 0;
+}
+
+#container{
+	width: 500px;
+	margin: 20px auto;
+}
+/*tab버튼 초기화*/
+ul.tab{
+	list-style: none;
+	position: relative;
+	z-index: 100;
+}
+/*개별버튼에 대한 크기와 가로 정렬*/
+ul.tab li{
+	width: 100px;
+	height: 40px;
+	float: left;
+}
+/*float 속성 해제*/
+ul:after{
+	content: "";
+	display: block;
+	float: none;
+	clear: both;
+}
+/*탭 버튼의 배경과 글자 처리*/
+ul.tab li a {
+	background: url("img/tab.jpg");
+	display: block;
+	color: #222;
+	line-height: 40px;
+	text-align: center;
+	text-decoration: none;
+}
+/*현재 활성화 탭의 배경 설정*/
+ul.tab li a.selected{
+	background: url("img/tab_selected.jpg");
+}
+
+p.panel{
+	border: 1px solid #9fb7d4;
+	padding: 10px;
+	margin: 0;
+	position: relative;
+	top: -1px;
+}
+</style>
+<script type="text/javascript">
+	$(function() {
+		//text 출력
+		//load() : 파일을 불러와서 태그에 출력하는 함수
+		$("p.panel").load($("ul.tab li a.selected").attr("href"))
+		
+		$("ul.tab li a").click(function() {
+			//클릭된 태그를 제외한 나머지 태그에서 "selected" 클래스 제거
+			$("ul.tab li a").not(this).removeClass("selected");
+			
+			//클릭된 태그에 "selected"클래스 추가
+			$(this).addClass("selected");
+			//파일을 불러와서 태그에 출력
+			$("p.panel").load($(this).attr("href"));
+			//<a>태그 무효화
+			return false;
+		});
+	});
+</script>
+</head>
+<body>
+	<div id="container">
+		<ul class="tab">
+			<li><a href="txt/html5.txt" class="selected">HTML5</a></li>
+			<li><a href="txt/jquery.txt">jQuery</a></li>
+			<li><a href="txt/bootstrap.txt">Bootstrap</a></li>
+		</ul>
+		
+		<!-- 내용 영역 -->
+		<p class="panel"></p>
+	</div>
+</body>
+</html>
