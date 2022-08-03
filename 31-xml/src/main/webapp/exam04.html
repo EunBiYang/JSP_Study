@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+<style type="text/css">
+*{
+	padding: 0;
+	margin: 0;
+	color: #333;
+}
+ul{
+	list-style: none;
+}
+#container{
+	padding: 30px 20px;
+}
+h1{
+	font-size: large;
+	border-left: 10px solid #7baeb5;
+	border-bottom: 1px solid #7baeb5;
+	padding: 10px;
+	width: auto;
+}
+#comment_write{
+	padding: 20px 15px;
+	border-bottom: 1px solid #7baeb5;
+}
+#comment_write label{
+	display: inline-block;
+	width: 80px;
+	font-size: 14px;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+#comment_write input[type='text'],#comment_write textarea{
+	border: 1px solid #ccc;
+	vertical-align: middle;
+	padding: 3px 10px;
+	font-size: 12px;
+	line-height: 150%;
+}
+#comment_write textarea{
+	width: 380px;
+	height: 90px;
+}
+/*-----------존재하지 않는 태그---------------*/
+.comment_item {
+	font-size: 13px;
+	color: #333;
+	padding: 15px;
+	border-bottom: 1px dotted #ccc;
+	line-height: 150%;
+}
+.comment_item .writer{
+	color: #555;
+	line-height:  200%;
+}
+.comment_item .writer input{
+	vertical-align: middle;
+}
+.comment_item .writer .name{
+	color: #222;
+	font-weight: bold;
+	font-size: 14px;
+}
+</style>
+<script type="text/javascript">
+	//새로운 글을 화면에 추가하기 위한 함수
+	function addNewItem(num, writer, content, datetime) {
+		//새로운 글이 추가될 <li>태그 만들기
+		var new_li = $("<li>");
+		new_li.attr("data-num", num);
+		new_li.addClass("comment_item");
+		
+		//<p>태그 추가 : 작성자 정보
+		var writer_p = $("<p>");
+		writer_p.addClass("writer");
+		
+		var name_span = $("<spam>");
+		name_span.addClass("name");
+		name_span.html(writer + "님");
+		
+		var date_span = $("<span>");
+		date_span.html("/ "+datetime+" ");
+		
+		var del_input = $("<input>");
+		del_input.attr({
+			"type" : "button",
+			"value" : "삭제하기"
+		});
+		del_input.addClass("delete_btn");
+		
+		//<p>태그 추가 : 내용
+		var content_p = $("<p>");
+		content_p.html(content);
+		
+		//조립하기
+		writer_p.append(name_span).append(date_span).append(del_input);
+		new_li.append(writer_p).append(content_p);
+		$("#comment_list").append(new_li);
+	}
+	
+	$(function(){
+		//addNewItem("1", "홍길동", "내일은 웃으리", "2022-07-06");
+		/*기본 덧글 목록 불러오기*/
+		$.get("ajax/comment/comment_list.xml",{},function(data){
+			$(data).find("item").each(function() {
+				var num = $(this).find("num").text();
+				var writer = $(this).find("writer").text();
+				var content = $(this).find("content").text();
+				var datetime = $(this).find("datetime").text();
+				addNewItem(num, writer, content, datetime);
+			});
+		}).fail(function() {
+			alert("덧글 목록을 불러오지 못했습니다. 잠시후 다시 시도해 주세요.")
+		});
+		
+		/*덧글 내용 저장 이벤트*/
+		$("#comment_form").submit(function() {
+			//alert( $(this).serialize());
+			
+			//입력검사
+			if(!$("input[name='user_name']").val()){
+				alert("이름을 입력하세요.");
+				$("input[name='user_name']").focus();
+				return false; //submit 무효화 및 함수 강제 종료
+			}else if(!$("textarea[name='comment']").val()){
+				alert("내용을 입력하세요.");
+				$("textarea[name='comment']").focus();
+				return false;
+			}
+			
+			/*글 저장을 위한 post 방식의 ajax 연동 처리*/
+			var url = "ajax/comment/comment_write.jsp";
+			//.serialize() : input에 있는 값을 자동으로 파라미터값으로 변경해주는 함수
+			//"ajax/comment/comment_write.jsp"에서 처리한 값을 xml로 받는다.
+			$.post(url, $(this).serialize(), function (xml) {
+				var result = eval($(xml).find("result").text()); //eval 불린값으로 변환
+				if(!result){
+					alert($(xml).find("message").text());
+					return false	//함수 종료
+				}
+				
+				var num = $(xml).find("num").text();
+				var writer = $(xml).find("writer").text();
+				var content = $(xml).find("content").text();
+				var datetime = $(xml).find("datetime").text();
+				
+				addNewItem(num,writer, content, datetime);
+			}).fail(function() {
+				alert("덧글 저장에 실패했습니다. 잠시후 다시 시도해주세요.")
+			});
+			
+			//입력된 값 지우기
+			$("input[name='user_name']").val("");
+			$("textarea[name='comment']").val("");
+			return false;	//submit 무효화. 안하면 화면이 움직여버린다.
+		});
+		
+		//삭제하기
+		//만들어저 있지 않은거!document on 작업 해줘야함 
+		$(document).on("click", ".delete_btn", function() {
+			if(confirm("선택하신 항목을 삭제하시겠습니까?")){
+				var url = "ajax/comment/comment_delete.jsp";
+				var num = $(this).parents("li").attr("data-num");
+				var target = $(this).parents("li.comment_item");//삭제할 태그 선택, li만 써도 됨
+				
+				/*삭제요청*/
+				$.post(url, {"num":num}, function(xml){
+					var result = eval($(xml).find("result").text());
+					var message = $(xml).find("message").text();
+					
+					alert(message);
+					
+					//서버에서 삭제 성공시 데이터가 오면, 테그 삭제
+					if(result){
+						target.remove();
+					}
+				}).fail(function() {
+					alert("덧글 삭제에 실패했습니다. 잠시후에 다시 시도해 주세요.")
+				});
+			}
+		});
+	});
+</script>
+</head>
+<body>
+	<div id="container">
+		<h1>jQuery Comment</h1>
+		<div id="comment_write">
+			<form action="" id="comment_form">
+				<div>
+					<label>작성자</label>
+					<input type="text" name="user_name">
+					<input type="submit" value="저장하기">
+				</div>
+				
+				<div>
+					<label>덧글 내용</label>
+					<textarea name="comment"></textarea>
+				</div>
+			</form>
+		</div>
+		
+		<!-- 덧글 추가 -->
+		<ul id="comment_list"></ul>
+	</div>
+</body>
+</html>
