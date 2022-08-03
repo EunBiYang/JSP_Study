@@ -1,0 +1,25 @@
+@charset "UTF-8";
+*{
+	font-family: "Gamja Flower","DX영화자막","굴림";
+}
+form{
+ background: HoneyDew;
+}
+
+label{
+	border-width : 30px;
+	display: inline-block;
+	width: 80px;
+	text-align: right;
+	padding : 10px;
+}
+button{
+	width:150px; 
+	margin:0 auto; 
+	background : green;
+	color: white;
+}
+input[type=text]:focus, input[type=password]:focus, input[type=email]:focus{
+	font-size: 100%;
+}
+

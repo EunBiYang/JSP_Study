@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원가입 화면설계</title>
+<link type="text/css" rel="stylesheet" href="css/css_test.css">
+<link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
+
+</head>
+<body>
+	<form action="" method="get">
+		<fieldset>
+			<legend><h1 style="margin-bottom: 20px">▶회원가입◀</h1></legend>
+			<hr>
+				<div>
+					<label>회원ID</label>
+					<input type="text" name="userID" placeholder="사용하실 ID">
+				</div>
+				<div>
+					<label>이  름</label>
+					<input type="text" name="userName" placeholder="ex) 홍길동">
+				</div>
+				<div>
+					<label>생년월일</label>
+					<input type="text" name="BirthDay" placeholder="ex)20220608">
+				</div>
+				<div>
+					<label>성  별</label>
+					<input type="radio" id="m" name="userSex" value="남자">남자
+					<input type="radio" id="w" name="userSex" value="여자">여자
+				</div>
+				<div>
+					<label>핸드폰번호</label>
+					<input type="text" name="userTel" placeholder="ex)000-0000-0000">
+				</div>
+				<div>
+					<label>이메일</label>
+					<input type="email" name="userEmail" placeholder="Email입력">
+				</div>
+				<div>
+					<label>비밀번호</label>
+					<input type="password" name="userPW" 
+					placeholder="비밀번호 6자리" maxlength="6">
+				</div>
+				<hr>
+				<div>
+					<button type="submit" value="확인" ><font face="DX영화자막">확인</font></button>
+					<button type="reset" value="취소" ><font face="DX영화자막">취소</font></button>
+				</div>
+		</fieldset>
+	</form>
+</body>
+</html>
