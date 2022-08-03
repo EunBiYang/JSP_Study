@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/common.css">
+<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+<style type="text/css">
+/*-------------추가 부분 ---------------*/
+div.console{
+	font-style: normal;
+	text-align: center;
+}
+div.exec2{
+	padding: 20px 15px;
+	border-bottom: 1px solid #7BAEB5;
+}
+.table1{
+	width : 700px;
+	padding: 10px;
+}
+.table1 .name_tr{
+	text-align : center;
+	font-weight : bold;
+	font-style : normal;
+	border-bottom: 2px solid #000080;
+}
+.table1 .name_tr2{
+	text-align : center;
+	height:10px;
+	border-bottom: 1px solid #ccc;
+}
+.table1 .name_tr2 td{
+	text-align : center;
+	width:35px;
+	padding-top: 15px;	
+}
+</style>
+
+<script type="text/javascript">
+
+	$(function() {
+		$.ajax({
+			//url : "ajax/json/bbs.json",
+			url : "ajax/json/bbs1.jsp",
+			type : "get",
+			dataType : "json",
+			success : function(json) {
+				//데이터 가져오기
+				var title = json.title;
+				var description = json.description;
+				var total = json.total;
+				var item = json.item;
+				
+				$(".title").append(title);
+				$(".exec").append(description);
+				$(".exec2").append("총 게시물 수 : " +total+"개");
+				
+				
+				var tr = $("<tr>");
+				tr.addClass("name_tr");
+				var td1 = $("<td>").html("번호");
+				var td2 = $("<td>").html("제목");
+				var td3 = $("<td>").html("조회수");
+				var td4 = $("<td>").html("작성일시");
+				
+				tr.append(td1).append(td2).append(td3).append(td4);
+				$(".table1").append(tr);
+				
+				//배열 가져오기
+				for(var i=0;i<item.length;i++){
+					var no = item[i].no;
+					var subject = item[i].subject;
+					var hit = item[i].hit;
+					var date = item[i].date;
+					
+				//태그 생성			
+				var tr = $("<tr>");
+				tr.addClass("name_tr2");
+				var td1 = $("<td>").html(no);
+				var td2 = $("<td>").html(subject);
+				var td3 = $("<td>").html(hit);
+				var td4 = $("<td>").html(date);
+				
+				//조합
+				$(".table1").append(tr.append(td1).append(td2).append(td3).append(td4));
+				}
+			},
+			error: function(xhr, textStatus, errorThrown) {
+				$("#result").html("[ERROR] "+xhr.status);
+			}
+		});
+	})
+</script>
+
+</head>
+<body>
+	<h1 class="title"></h1>
+	<div class="exec"></div>
+	<div class="exec2"></div>
+	<div class="console" id="result">
+		<table border="1" class="table1" ></table>
+	</div>
+</body>
+</html>
